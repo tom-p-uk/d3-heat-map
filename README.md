@@ -22,4 +22,4 @@ A simple D3 project to make a heat map that satisfies the user stories outlined 
 
 ### Heroku Demo:
 
-Go to [this link](https://tom-p-uk-d3-heat-map.herokuapp.com/) link to check out a demo of the bar chart.
+Go to [this link](https://tom-p-uk-d3-heat-map.herokuapp.com/) link to check out a demo of the heat map.
