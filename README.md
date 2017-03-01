@@ -1,4 +1,4 @@
-# D3 Scatter Plot
+# D3 Heat Map
 
 A simple D3 project to make a heat map that satisfies the user stories outlined below. The static files are served by a lightweight Node/Express server.
 
