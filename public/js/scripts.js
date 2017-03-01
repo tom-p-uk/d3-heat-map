@@ -29,8 +29,6 @@ function renderHeatMap(dataRaw) {
     };
   });
 
-  console.log(data);
-
   // calculate min and max data values
   const yearMin = d3.min(data, (d) => d.year);
   const yearMax = d3.max(data, (d) => d.year);
@@ -57,20 +55,12 @@ function renderHeatMap(dataRaw) {
     .domain(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
     .range([height - margin.bottom, margin.top])
 
-  // filter data to space out x axis tick points - 1 per data point is too many
-  // let tickValues = data.filter((d, i) => !(d.yearFormatted % 20));
-  // tickValues = tickValues.filter((d) => )
-  // console.log(tickValues);
-
   // set up x and y axes
   const xAxis = d3.axisBottom(xScale)
 
   const yAxis = d3.axisLeft(yScale)
     .tickSizeOuter(0)
     .tickSizeInner(3)
-    // .tickValues()
-
-    // .tickValues(data.map((d) => d.monthFormatted))
 
   // append axes to svg
   svg.append('g')
@@ -113,6 +103,7 @@ function renderHeatMap(dataRaw) {
   const rectWidth = (width - margin.left - margin.right) / (data.length / 12);
   const rectHeight = (height - margin.top - margin.bottom) / 12;
 
+  // append rects to svg
   const rect = svg.selectAll('rect')
     .data(data)
     .enter()
@@ -155,7 +146,7 @@ function renderHeatMap(dataRaw) {
     .attr('data-temp', (d) => d.temperature)
     .on('mouseover', (d) => {
       // show tooltip when user hovers over bar and dynamically allocate attributes
-      tooltip.attr('data-year', d.year)
+      tooltip.attr('data-year', d.yearFormatted)
         .style('left', `${xScale(d.year) + 105}px`)
         .style('top', `${yScale(d.monthFormatted) - 70}px`)
         .html(
